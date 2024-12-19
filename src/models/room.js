@@ -7,8 +7,6 @@ const { mongoose } = require("../configs/dbConnection");
 
 //User Model:
 
-const passwordEncrypt = require("../helpers/passwordEncrypt");
-
 const RoomSchema = new mongoose.Schema(
   {
     room_number: {
