@@ -5,7 +5,7 @@
 const { mongoose } = require("../configs/dbConnection");
 /* ------------------------------------------------------- */
 
-//User Model
+//User Model:
 
 const passwordEncrypt = require("../helpers/passwordEncrypt");
 
@@ -48,3 +48,6 @@ const UserSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+//Model:
+module.exports = mongoose.model("User", UserSchema);
