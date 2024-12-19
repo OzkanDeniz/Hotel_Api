@@ -9,45 +9,28 @@ const { mongoose } = require("../configs/dbConnection");
 
 const passwordEncrypt = require("../helpers/passwordEncrypt");
 
-const UserSchema = new mongoose.Schema(
+const RoomSchema = new mongoose.Schema(
   {
-    username: {
+    room_number: {
       type: String,
-      trim: true,
       required: true,
       unique: true,
     },
-    password: {
+    image: String,
+    bed_type: {
       type: String,
-      trim: true,
       required: true,
-      set: passwordEncrypt,
     },
-    email: {
-      type: String,
-      trim: true,
+    price: {
+      type: Number,
       required: true,
-      unique: true,
-      validate: [
-        //! regex: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-        (email) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email),
-        "Email format is not correct.",
-      ],
-    },
-    isActive: {
-      type: Boolean,
-      default: true,
-    },
-    isAdmin: {
-      type: Boolean,
-      default: false,
     },
   },
   {
-    collection: "users",
+    collection: "rooms",
     timestamps: true,
   }
 );
 
 //Model:
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Room", RoomSchema);

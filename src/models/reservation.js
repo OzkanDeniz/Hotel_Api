@@ -21,7 +21,7 @@ const ReservationSchema = new mongoose.Schema(
       ref: "Room",
       required: true,
     },
-    arrrival_date: {
+    arrival_date: {
       type: Date,
       required: true,
     },
