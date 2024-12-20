@@ -31,7 +31,7 @@ module.exports = {
   },
 
   //CRUD
-  crate: async (req, res) => {
+  create: async (req, res) => {
     /*
             #swagger.tags = ["Reservations"]
             #swagger.summary = "Create Reservations"

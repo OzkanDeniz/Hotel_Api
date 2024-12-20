@@ -30,7 +30,7 @@ const ReservationSchema = new mongoose.Schema(
       type: Date,
       required: true,
       validate: [
-        (value) => {
+        function (value) {
           return (
             value > this.arrival_date,
             "Departure date must be after arrival date"

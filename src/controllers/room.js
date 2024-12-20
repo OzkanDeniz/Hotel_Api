@@ -29,7 +29,7 @@ module.exports = {
   },
 
   //CRUD
-  crate: async (req, res) => {
+  create: async (req, res) => {
     /*
             #swagger.tags = ["Rooms"]
             #swagger.summary = "Create Rooms"
