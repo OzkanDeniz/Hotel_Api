@@ -9,15 +9,15 @@ const router = require("express").Router();
 // URL: /
 //!
 /*------------------------------------------- */
-// auth:
-// router.use("/auth", require("./auth"));
-// // user:
-// router.use("/user", require("./user"));
-// // room:
-// router.use("/room", require("./room"));
+router.use("/auth", require("./auth"));
+router.use("/token", require("./token"));
+// user:
+router.use("/user", require("./user"));
+// room:
+router.use("/room", require("./room"));
 
-// // reservation:
-// router.use("/reservation", require("./reservation"));
+// reservation:
+router.use("/reservation", require("./reservation"));
 
 /* ------------------------------------------------------- */
 module.exports = router;

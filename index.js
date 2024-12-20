@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(require("./src/middlewares/logger"));
 
 // Auhentication:
-// app.use(require('./src/middlewares/authentication'))
+app.use(require('./src/middlewares/authentication'))
 
 // findSearchSortPage / res.getModelList:
 app.use(require("./src/middlewares/queryHandler"));
@@ -49,7 +49,7 @@ app.use(require("./src/middlewares/queryHandler"));
 // Routes:
 
 //! routes/index.js:
-// app.use("/", require("./src/routes/"));
+app.use("/", require("./src/routes/"));
 
 // HomePath:
 app.all("/", (req, res) => {

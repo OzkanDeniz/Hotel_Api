@@ -17,11 +17,26 @@ const RoomSchema = new mongoose.Schema(
     image: String,
     bed_type: {
       type: String,
+      enum: ["single", "double", "family", "King"],
       required: true,
+    },
+    bed_space: {
+      type: Number,
+      min: 1,
+      default: function (value) {
+        if (this.bed_type == "single") return 1;
+        else if (this.bed_type == "double") return 2;
+      },
+
+      transform: function (value) {
+        if (this.bed_type == "single") return 1;
+        else if (this.bed_type == "double") return 2;
+      },
     },
     price: {
       type: Number,
       required: true,
+      min: 50,
     },
   },
   {

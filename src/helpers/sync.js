@@ -13,7 +13,7 @@ const Room = require("../models/room");
 module.exports = async function () {
   /* CLEAR DATABASE */
   try {
-    await User.deleteMany();
+    await User.deleteMany();                    
     await Reservation.deleteMany();
     await Room.deleteMany();
     console.log("- Database and all data DELETED!");

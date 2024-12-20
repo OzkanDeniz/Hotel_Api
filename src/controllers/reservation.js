@@ -3,6 +3,7 @@
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 const Reservation = require("../models/reservation");
+const Room = require("../models/room");
 
 module.exports = {
   list: async (req, res) => {
@@ -33,26 +34,38 @@ module.exports = {
   //CRUD
   create: async (req, res) => {
     /*
-            #swagger.tags = ["Reservations"]
-            #swagger.summary = "Create Reservations"
-        */
+    #swagger.tags = ["Reservations"]
+    #swagger.summary = "Create Reservations"
+    */
 
-    const data = await Reservation.create(req.body);
+    const arrivalDate = new Date(req.body.arrival_date);
+    const departureDate = new Date(req.body.departure_date);
 
-    let newData = undefined;
-
-    //Eğer order oluşturulmuşsa populate yapabilmek için yeniden sorgu at
-
-    if (data) {
-      newData = await Reservation.findOne({ _id: data.id }).populate([
-        "userId",
-        "roomId",
-      ]);
+    if (arrivalDate >= departureDate) {
+      return res.status(400).send({
+        error: true,
+        message: "Arrival date must be before departure date.",
+      });
     }
+
+    const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+    req.body.night = Math.round(departureDate - arrivalDate) / oneDay;
+    req.body.userId = req.user._id;
+
+    //room un bilgilerini al
+    const { price } = await Room.findOne(
+      { _id: req.body.roomId },
+      "price -_id "
+    );
+
+    req.body.totalprice = req.body.night * price;
+    req.body.price = price;
+    console.log(req.body);
+    const data = await Reservation.create(req.body);
 
     res.status(201).send({
       error: false,
-      newData,
+      data,
     });
   },
 

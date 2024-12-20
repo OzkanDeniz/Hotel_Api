@@ -34,6 +34,13 @@ module.exports = {
             #swagger.tags = ["Rooms"]
             #swagger.summary = "Create Rooms"
         */
+    const { bed_type, bed_space } = req.body;
+    if (bed_type == "family" || bed_type == "King") {
+      if (!bed_space) throw new Error("bed space required");
+      if (!(bed_space >= 3 && bed_space <= 7)) {
+        throw new Error("Bed space must be between 3 and 7");
+      }
+    }
 
     const data = await Room.create(req.body);
 
@@ -61,6 +68,13 @@ module.exports = {
             #swagger.tags = ["Rooms"]
             #swagger.summary = "Update Rooms"
         */
+    const { bed_type, bed_space } = req.body;
+    if (bed_type == "family" || bed_type == "King") {
+      if (!bed_space) throw new Error("bed space required");
+      if (!(bed_space >= 3 && bed_space <= 7)) {
+        throw new Error("Bed space must be between 3 and 7");
+      }
+    }
 
     const data = await Room.updateOne({ _id: req.params.id }, req.body, {
       runValidators: true,
