@@ -1,0 +1,13 @@
+[
+    {
+      "userId": "644f9d8e8c9b0f1e9f42b0f1",
+      "roomId": "644f9d8e8c9b0f1e9f42b0f2",
+      "arrival_date": "2023-12-01",
+      "departure_date": "2023-12-05",
+      "guest_number": 2,
+      "night": 4,
+      "price": 150,
+      "totalprice": 600
+    }
+  ]
+  

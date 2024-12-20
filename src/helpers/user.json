@@ -1,0 +1,10 @@
+[
+    {
+      "username": "john_doe",
+      "password": "hashed_password",
+      "email": "john@example.com",
+      "isActive": true,
+      "isAdmin": false
+    }
+  ]
+  
